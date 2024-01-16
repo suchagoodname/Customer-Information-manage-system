@@ -1,0 +1,54 @@
+﻿<Window x:Class="客户信息管理系统1.Gather"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:客户信息管理系统1"
+        mc:Ignorable="d"
+       Title="Gather" Height="523.926" Width="637.627" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListView Name="listView1" 
+                  IsSynchronizedWithCurrentItem="True" Margin="29,0,0,213" Height="230" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Width="281" SelectionChanged="listView1_SelectionChanged" Grid.ColumnSpan="2"  >
+            <ListView.View>
+                <GridView AllowsColumnReorder="True" >
+                    <GridViewColumn Header="客户号" 
+                                    DisplayMemberBinding="{Binding Path=CustomerNum}"/>
+                    <GridViewColumn Header="姓名" Width="100"
+                                    DisplayMemberBinding="{Binding Path=CustomerName}"/>
+                    <GridViewColumn Header="密码" Width="100"
+                                    DisplayMemberBinding="{Binding Path=CustomerPassword}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Name="listView2" Margin="25,0,0,19" FontSize="16"
+                  ItemsSource="{Binding Path=Commodity}" IsSynchronizedWithCurrentItem="True"
+                   HorizontalAlignment="Left" Width="330" Height="178" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.534"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-1.816"/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" >
+                    <GridViewColumn  Header="商品名" 	 DisplayMemberBinding="{Binding Path=CommodityName}"/>
+                    <GridViewColumn  Header="价格" 	DisplayMemberBinding="{Binding Path=Price}"/>
+                    <GridViewColumn  Header="售后问题" Width="100"	DisplayMemberBinding="{Binding Path=After-Sales-Propose}"/>
+                    <GridViewColumn  Header="售后回复" Width="100"	DisplayMemberBinding="{Binding Path=After-Sales-Reply}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="28,12,0,0" VerticalAlignment="Top" Width="106" Height="27" SelectionChanged="comboBox1_SelectionChanged">
+            <ComboBoxItem Content="客户号"/>
+            <ComboBoxItem Content="姓名"/>
+        </ComboBox>
+        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Margin="169,15,0,0" VerticalAlignment="Top" Width="72" Height="26" RenderTransformOrigin="0.719,1.245"/>
+        <Button Content="查询" HorizontalAlignment="Left" Margin="491,11,0,0" VerticalAlignment="Top" Height="35" Width="99" FontSize="22" Click="Button_Click"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="290,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" Height="32"/>
+        <Grid Name="grid1" Margin="4,0,7,0">
+            <TextBlock Name="textBlock1" Text="{Binding Path=CustomerName,Mode=TwoWay}" Height="20" Width="92" HorizontalAlignment="Left" Margin="12,0,0,6" VerticalAlignment="Bottom" />
+        </Grid>
+    </Grid>
+</Window>
